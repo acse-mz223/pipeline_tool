@@ -4,13 +4,13 @@ A drag and drop pipeline tool (as a kanban board) with multiple columns. Constru
 ## 📝 Table of Contents
 
 - [Basic Function](#function)
+- [Project Structure](#structure)
 - [Getting Started](#getting_started)
 - [Tech & Approach](#approach)
 - [State managemant](#state)
 - [Twist Features](#twist)
 - [Testing](#testing)
 - [Authors](#authors)
-
 
 
 ## 🧐 Basic Funciton <a name = "function"></a>
@@ -21,6 +21,25 @@ A drag and drop pipeline tool (as a kanban board) with multiple columns. Constru
 - Add new column into current board (Have title constrain: No duplicatre title)
 - Delete current items 
 - Update current items (Cant drag any items while editing)
+
+## 📁 Project Structure <a name = "structure"></a>
+
+```
+src/
+├─ app/
+│ └─ page.tsx # Main board page
+├─ components/
+│ ├─ AddColumnComponent.tsx
+│ ├─ AddItemComponent.tsx
+│ ├─ ColumnComponent.tsx
+│ └─ ItemComponent.tsx
+├─ store/
+│ └─ store.ts # Zustand global state
+├─ type/
+│ └─ type.ts # TypeScript type definitions
+└─ __test__/
+  └─ store.test.ts # 
+```
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
@@ -37,26 +56,6 @@ npm run dev
 
 #open browser
 http://localhost:3000
-```
-
-## 🔧 Running the tests <a name = "tests"></a>
-
-Explain how to run the automated tests for this system.
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
 ```
 
 ## 🎈 Approach <a name="approach"></a>
@@ -105,12 +104,17 @@ Smooth dnd across columns, backed by clean state updates.
 ### **4. gradient-themed UI** 
 Both functional and visually distinct.
 
-## ⛏️ Test <a name = "testing"></a>
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+## 🔧 Test <a name = "testing"></a>
+
+Currently, this project has a **Unit tests** for Zustand store logic using Jest
+
+To tests :
+```bash
+# Run tests
+npm test
+```
+
 
 ## ✍️ Authors <a name = "authors"></a>
 
