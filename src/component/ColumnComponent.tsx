@@ -14,7 +14,7 @@ function ColumnComponent({col}:{col: ColumnType}) {
                     <div                                
                         ref={provided.innerRef}
                         {...provided.droppableProps}
-                        className='py-5 px-5 w-[350px] border-2 border-amber-200 rounded-2xl bg-gradient-to-b from-rose-50 via-orange-100 to-amber-100'
+                        className='py-5 px-5 w-[350px] border-2 border-amber-200 rounded-2xl bg-gradient-to-b from-rose-50 via-orange-100 to-amber-100 shadow-lg'
                     >   
                         {/* col info */}
                         <div className='flex items-end gap-5 pb-5'>

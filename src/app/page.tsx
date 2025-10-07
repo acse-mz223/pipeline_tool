@@ -23,7 +23,7 @@ export default function Home() {
   }
   // return 
   return (
-    <div className="px-5 md:px-10 py-10 h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50">
+    <div className="px-5 md:px-10 py-10 h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 transition-all duration-500">
       <div className="w-full flex justify-center pb-10 text-2xl font-extrabold text-amber-700">Pipeline tool</div>
       <div className='flex h-full flex-row items-start gap-5 md:gap-10 overflow-x-auto'>
         <DragDropContext onDragEnd={handleDragEnd}>
