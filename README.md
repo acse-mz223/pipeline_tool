@@ -1,50 +1,43 @@
 # Pipeline tool
+A drag and drop pipeline tool (as a kanban board) with multiple columns. Construced by Next.js, React, Zustand, lucide, etc.
 
 ## 📝 Table of Contents
 
-- [About](#about)
+- [Basic Function](#function)
 - [Getting Started](#getting_started)
-- [Deployment](#deployment)
-- [Usage](#usage)
-- [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
+- [Tech & Approach](#approach)
+- [State managemant](#state)
+- [Twist Features](#twist)
+- [Testing](#testing)
 - [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
 
-## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+
+## 🧐 Basic Funciton <a name = "function"></a>
+
+- Drag and drop items into different columns
+- Drag and drop items to chang sequence in smae column
+- Add new items for each column
+- Add new column into current board (Have title constrain: No duplicatre title)
+- Delete current items 
+- Update current items (Cant drag any items while editing)
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+```bash
+# Download the code from github
+git clone https://github.com/acse-mz223/pipeline_tool.git
+cd pipeline_tool
 
-### Prerequisites
+# Install dependency
+npm install 
 
-What things you need to install the software and how to install them.
+# Run code on server
+npm run dev
 
+#open browser
+http://localhost:3000
 ```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo.
 
 ## 🔧 Running the tests <a name = "tests"></a>
 
@@ -66,15 +59,53 @@ Explain what these tests test and why
 Give an example
 ```
 
-## 🎈 Usage <a name="usage"></a>
+## 🎈 Approach <a name="approach"></a>
 
-Add notes about how to use the system.
+1. **Decide the tech stack** 
+  - **Language:** TypeScript
+  - **Framework:** [Next.js](https://nextjs.org/) (App Router)  
+  - **UI Library:** [React](https://react.dev/)  
+  - **Styling:** [Tailwind CSS](https://tailwindcss.com/)  
+  - **State Management:** [Zustand](https://zustand-demo.pmnd.rs/)  
+  - **Drag & Drop:** [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd)  
+  - **Icons:** [Lucide React](https://lucide.dev/)  
+  - **Notifications:** [react-hot-toast](https://react-hot-toast.com/)  
+  
+2. **design structure**  
+   - Split the board into modular components:  
+     - `ColumnComponent` → handles each column  
+     - `ItemComponent` → renders draggable task cards  
+     - `AddColumnComponent` & `AddItemComponent` → handle user input  
 
-## 🚀 Deployment <a name = "deployment"></a>
+3. **Data structure: normalized global state:**  
+   - Each column stores **only item IDs**, not full objects.  
+   - Item details are kept in a separate `item` array in the store.  
+   - This design can simplify item reordering and avoids deeply nested state trees.
 
-Add additional notes about how to deploy this on a live system.
+4. **Drag & drop interactions:**  
+   - Implemented using `react-beautiful-dnd` with `DragDropContext`.  
+   - Columns act as **droppable areas**, and tasks are **draggable**.  
 
-## ⛏️ Built Using <a name = "built_using"></a>
+
+## 🚀 State managemant -- Zustand <a name = "state"></a>
+  - Zustand was chosen o for its minimal API and excellent performance.  
+  - Each action (add, remove, move, update) is clearly defined in the store, keeping logic centralized.
+
+## ✨ Twist Feature <a name = "twist"></a>
+### **1. Dynamic column creation**
+Users can add custom columns to current. 
+There is a naming striction, so client can not use duplicated name.
+
+### **2. Inline item creation with priority levels** 
+There are 4 priorty for each item which are `urgent`, `high`, `medium`, `low`. Client can choose priorty by their need. 
+
+### **3. Smooth drag-and-drop reordering** 
+Smooth dnd across columns, backed by clean state updates.  
+
+### **4. gradient-themed UI** 
+Both functional and visually distinct.
+
+## ⛏️ Test <a name = "testing"></a>
 
 - [MongoDB](https://www.mongodb.com/) - Database
 - [Express](https://expressjs.com/) - Server Framework
@@ -83,12 +114,4 @@ Add additional notes about how to deploy this on a live system.
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
-
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
-
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+- Moyu Zhang
