@@ -16,11 +16,11 @@ A drag and drop pipeline tool (as a kanban board) with multiple columns. Constru
 ## 🧐 Basic Funciton <a name = "function"></a>
 
 - Drag and drop items into different columns
-- Drag and drop items to chang sequence in smae column
+- Drag and drop items to chang sequence in same column
 - Add new items for each column
-- Add new column into current board (Have title constrain: No duplicatre title)
+- Add new column into current board (Have tittle constrain: No duplicate title)
 - Delete current items 
-- Update current items (Cant drag any items while editing)
+- Update current items (**Cant drag any items while editing**)
 
 ## 📁 Project Structure <a name = "structure"></a>
 
@@ -28,7 +28,7 @@ A drag and drop pipeline tool (as a kanban board) with multiple columns. Constru
 src/
 ├─ app/
 │ └─ page.tsx # Main board page
-├─ components/
+├─ component/
 │ ├─ AddColumnComponent.tsx
 │ ├─ AddItemComponent.tsx
 │ ├─ ColumnComponent.tsx
@@ -71,10 +71,10 @@ http://localhost:3000
   - **Notifications:** [react-hot-toast](https://react-hot-toast.com/)  
   
 2. **design structure**  
-   - Split the board into modular components:  
-     - `ColumnComponent` → handles each column  
-     - `ItemComponent` → renders draggable task cards  
-     - `AddColumnComponent` & `AddItemComponent` → handle user input  
+Split the board into modular components:  
+  - `ColumnComponent` → handles each column  
+  - `ItemComponent` → renders draggable task cards  
+  - `AddColumnComponent` & `AddItemComponent` → handle user input  
 
 3. **Data structure: normalized global state:**  
    - Each column stores **only item IDs**, not full objects.  
@@ -87,13 +87,13 @@ http://localhost:3000
 
 
 ## 🚀 State managemant -- Zustand <a name = "state"></a>
-  - Zustand was chosen o for its minimal API and excellent performance.  
+  - Zustand was chosen for its minimal API and excellent performance.  
   - Each action (add, remove, move, update) is clearly defined in the store, keeping logic centralized.
 
 ## ✨ Twist Feature <a name = "twist"></a>
 ### **1. Dynamic column creation**
 Users can add custom columns to current. 
-There is a naming striction, so client can not use duplicated name.
+There is a naming constrain, so client can not use duplicated name.
 
 ### **2. Inline item creation with priority levels** 
 There are 4 priorty for each item which are `urgent`, `high`, `medium`, `low`. Client can choose priorty by their need. 
